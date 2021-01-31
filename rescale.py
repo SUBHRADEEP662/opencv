@@ -1,11 +1,11 @@
-import cv2 
+from cv2 import cv2 
 
 def rescale(frame, scale = 1):
     height = int(frame.shape[0] * scale)
     width = int(frame.shape[1] * scale)
     
     dimension = (width, height)
-    return cv2.resize(frame, dimension)
+    return cv2.resize(frame, dimension, interpolation = cv2.INTER_AREA)
     
 
 capture = cv2.VideoCapture('video1.mp4')
@@ -17,7 +17,7 @@ while True:
         
     
     i = 0.5
-    while(i<=2.00):
+    while(i<=0.60):
         cv2.imshow('Resized'+str(i), rescale(frame, scale=i))
         i = i + 0.05
     
